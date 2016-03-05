@@ -3,12 +3,14 @@ import config from '../../config';
 import './auth.scss';
 
 import Asana from 'asana';
+import cookie from 'react-cookie';
 
 class Auth extends React.Component {
   constructor() {
     super();
     this.state = {
-      name: ''
+      name: '',
+      loaded: false
     };
   }
   componentWillMount() {
@@ -17,26 +19,29 @@ class Auth extends React.Component {
       redirectUri: config.asana.oAuth.redirect_uri
     });
 
-    // Configure the way we want to use Oauth. This auto-detects that we're
-    // in a browser and so defaults to the redirect flow, which we want.
-    client.useOauth();
+    const token = cookie.load('token');
 
-    client.authorize().then(() => {
-      // The client is authorized! Make a simple request.
-      return client.users.me().then((me) => {
+    if (token) {
+      client.useOauth({ credentials: token });
+      client.users.me().then((me) => {
         this.setState({
-          name: me.name
+          name: me.name,
+          loaded: true
         });
-        console.log('Hello ' + me.name);
+      }).catch((err) => {
+        console.log('Error fetching user: ' + err);
       });
-    }).catch((err) => {
-      console.log('An error occurred', err);
-    });
+    } else {
+      this.setState({
+        loaded: true
+      });
+    }
   }
 
   render() {
     return (
       <div className="auth-container">
+        <div style={this.state.loaded ? { display: 'block' } : { display: 'none' }}>
         { this.state.name ?
           <div>
             <h3>Hello <span className="name">{this.state.name}</span></h3>
@@ -45,6 +50,10 @@ class Auth extends React.Component {
            <img src="/public/images/asana-oauth.png"></img>
           </a>
         }
+        </div>
+        <div style={!this.state.loaded ? { display: 'block' } : { display: 'none' }}>
+        Loading...
+        </div>
       </div>
     );
   }
