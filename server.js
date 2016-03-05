@@ -40,6 +40,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+app.get('/oAuth/:foo', (req, res) => {
+  console.log(req.params.foo);
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
+
+
+
 const host = (environment === 'production') ? config.prod.host : config.dev.host;
 const port = (environment === 'production') ? config.prod.port : config.dev.port;
 

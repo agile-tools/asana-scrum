@@ -24,6 +24,10 @@ module.exports = {
         include: path.join(__dirname, 'src')
       },
       {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
         test: /\.scss$/,
         loader: 'style!css!autoprefixer!sass'
       },
