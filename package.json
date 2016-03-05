@@ -55,6 +55,7 @@
     "webpack-hot-middleware": "^2.9.1"
   },
   "dependencies": {
+    "asana": "^0.14.1",
     "body-parser": "^1.14.1",
     "jquery": "^2.2.0",
     "react": "^0.14.7",

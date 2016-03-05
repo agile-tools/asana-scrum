@@ -1,0 +1,23 @@
+const config = {};
+// Development
+config.dev = {};
+config.dev.host = 'localhost';
+config.dev.port = 3210;
+
+// Production
+config.prod = {};
+config.prod.host = '100.200.100.200';
+config.prod.port = 80;
+
+config.asana = {};
+config.asana.oAuth = {};
+config.asana.oAuth.client_id = '<your client_id>';
+config.asana.oAuth.client_secret = '<your client_secret>';
+config.asana.oAuth.redirect_uri = `http://localhost:3210/oAuth/callback`;
+config.asana.oAuth.url = `https://app.asana.com/-/oauth_authorize?
+response_type=code&client_id=${config.asana.oAuth.client_id}&
+redirect_uri=${encodeURIComponent(config.asana.oAuth.redirect_uri)}&
+state=<STATE_PARAM>`;
+
+
+module.exports = config;
