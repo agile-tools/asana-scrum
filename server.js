@@ -46,6 +46,8 @@ if (environment === 'development') {
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/public', express.static(__dirname + '/public'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/index.html'));

@@ -1,7 +1,13 @@
 .auth-container {
-  margin: 10px;
-  padding: 10px;
+  margin: 10px 0;
+  min-height: 50px;
   .name {
-    color: blue;
+    color: #5c9acb;
+  }
+  .loader {
+    display: inline-block;
+    padding: 10px 0;
+    margin: 20px 0;
+    font-size: 14px;
   }
 }
