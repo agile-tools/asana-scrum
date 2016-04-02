@@ -19,13 +19,13 @@ class ProjectSelection extends React.Component {
 
   loadWorkspaces(apiClient) {
     apiClient.workspaces.findAll().then((workspaceList) => {
-      const workspaces = this.state.workspaces;
+      const workspaces = [];
       workspaceList.data.forEach((workspace) => {
         workspaces.push(<Workspace
           key = { workspace.id }
-          id = { workspace.id }
-          name = { workspace.name }
+          workspace = { workspace }
           apiClient = { this.props.apiClient }
+          controller = { this.props.controller }
         />);
       });
       this.setState({ workspaces });
@@ -43,7 +43,8 @@ class ProjectSelection extends React.Component {
 }
 
 ProjectSelection.propTypes = {
-  apiClient: React.PropTypes.object
+  apiClient: React.PropTypes.object,
+  controller: React.PropTypes.object
 };
 
 export default ProjectSelection;

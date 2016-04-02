@@ -12,13 +12,13 @@ class Workspace extends React.Component {
   }
 
   loadProjects() {
-    const projects = this.state.projects;
-    this.props.apiClient.projects.findByWorkspace(this.props.id).then((projectList) => {
+    const projects = [];
+    this.props.apiClient.projects.findByWorkspace(this.props.workspace.id).then((projectList) => {
       projectList.data.forEach((project) => {
         projects.push(<Project
           key = { project.id }
-          id = { project.id }
-          name = { project.name }
+          project = { project }
+          controller = { this.props.controller }
         />);
       });
       this.setState({ projects });
@@ -28,7 +28,8 @@ class Workspace extends React.Component {
   render() {
     return (
       <div className="workspace">
-        <a href="#" onClick={this.loadProjects.bind(this)}> {this.props.name} </a>
+        id:{this.props.workspace.id}
+        <a href="#" onClick={this.loadProjects.bind(this)}> {this.props.workspace.name} </a>
         {this.state.projects}
       </div>
     );
@@ -36,9 +37,9 @@ class Workspace extends React.Component {
 }
 
 Workspace.propTypes = {
-  id: React.PropTypes.number,
-  name: React.PropTypes.string,
-  apiClient: React.PropTypes.object
+  workspace: React.PropTypes.object,
+  apiClient: React.PropTypes.object,
+  controller: React.PropTypes.object
 };
 
 export default Workspace;

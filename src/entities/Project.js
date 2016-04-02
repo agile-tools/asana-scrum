@@ -3,23 +3,24 @@ import './ProjectSelection.scss';
 
 class Project extends React.Component {
 
-  loadTasks() {
+  loadTasks(project) {
+    this.props.controller.onProjectChanged(project);
   }
 
   render() {
     return (
       <div className="project">
-        ID: {this.props.id}<br/>
-        Name: <a href="#" onClick={this.loadTasks.bind(this)}> {this.props.name} </a>
+        ID: {this.props.project.id}<br/>
+        Name: <a href="#" onClick={this.loadTasks.bind(this, this.props.project)}> {this.props.project.name} </a>
       </div>
     );
   }
 }
 
 Project.propTypes = {
-  id: React.PropTypes.number,
-  name: React.PropTypes.string,
-  apiClient: React.PropTypes.object
+  project: React.PropTypes.object,
+  apiClient: React.PropTypes.object,
+  controller: React.PropTypes.object
 };
 
 export default Project;
