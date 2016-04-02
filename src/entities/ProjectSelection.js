@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProjectSelection.scss';
 import Workspace from './Workspace';
+import Loader from '../helpers/Loader';
 
 class ProjectSelection extends React.Component {
 
@@ -35,8 +36,8 @@ class ProjectSelection extends React.Component {
   render() {
     return (
       <div className="project-selection">
-        Workspaces
-        {this.state.workspaces}
+        <strong>Workspaces</strong>
+        { this.state.workspaces.length === 0 ? <Loader /> : this.state.workspaces }
       </div>
     );
   }

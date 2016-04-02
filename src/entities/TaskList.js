@@ -1,23 +1,28 @@
 import React from 'react';
 import './ProjectSelection.scss';
 import Task from './Task';
+import Loader from '../helpers/Loader';
 
 class TaskList extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      tasks: []
+      tasks: [],
+      loading: false
     };
   }
 
   componentWillReceiveProps(props) {
-    if (props.apiClient) {
+    if (props.apiClient && props.project) {
       this.loadTasks(props.apiClient, props.project);
     }
   }
 
   loadTasks(apiClient, project) {
+    this.setState({
+      loading: true
+    });
     apiClient.tasks.findAll({ 'project': project.id, 'opt_fields': 'id,name,external' }).then((taskList) => {
       const tasks = [];
       taskList.data.forEach((task) => {
@@ -28,7 +33,10 @@ class TaskList extends React.Component {
           controller = { this.props.controller }
         />);
       });
-      this.setState({ tasks });
+      this.setState({
+        tasks,
+        loading: false
+      });
     });
   }
 
@@ -36,7 +44,15 @@ class TaskList extends React.Component {
   render() {
     return (
       <div className="project-task-list">
-        {this.state.tasks}
+        <strong> Tasks </strong>
+        { this.state.loading ? <Loader/> :
+          <div>
+          { this.state.tasks.length > 0 ?
+            this.state.tasks :
+            'No tasks found'
+          }
+          </div>
+        }
       </div>
     );
   }

@@ -10,8 +10,7 @@ class Project extends React.Component {
   render() {
     return (
       <div className="project">
-        ID: {this.props.project.id}<br/>
-        Name: <a href="#" onClick={this.loadTasks.bind(this, this.props.project)}> {this.props.project.name} </a>
+        <li><a href="#" onClick={this.loadTasks.bind(this, this.props.project)}> {this.props.project.name} </a></li>
       </div>
     );
   }

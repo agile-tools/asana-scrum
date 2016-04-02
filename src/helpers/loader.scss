@@ -1,0 +1,166 @@
+.loading-indicator, .loading-indicator-blue, .inline-loading-indicator {
+    box-align: center;
+    box-pack: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    min-width: 25px;
+    padding: 20px 0;
+}
+.loading-indicator .loader-text, .loading-indicator-blue .loader-text, .inline-loading-indicator .loader-text {
+    color: #898e95;
+    display: none;
+    font-size: 12px;
+    margin-left: 12px;
+    vertical-align: middle;
+}
+.inline-loading-indicator {
+    text-align: left;
+}
+.inline-loading-indicator .loader-text {
+    display: inline-block;
+}
+div.loading-indicator-blue .loader-dot {
+    background-color: #898e95;
+    border-color: #898e95;
+}
+div.loading-indicator-blue .loader-text {
+    color: #676d76;
+}
+.dropdown .loadingIndicator {
+    transform: scale(0.7);
+}
+#Flags.enable_lighter_loading_indicators .loadingIndicator .loadingIndicator-dot, #Flags.enable_lighter_loading_indicators .loadingIndicator .loadingIndicator-dot::before, #Flags.enable_lighter_loading_indicators .loadingIndicator .loadingIndicator-dot::after {
+    background-color: #eff0f1;
+}
+.loadingIndicator .loadingIndicator-rotator {
+    animation: 1.5s linear 0s normal none infinite running loader-rotation;
+    width: 8px;
+}
+.loadingIndicator .loadingIndicator-dot {
+    animation: 1.5s ease 0s normal none infinite running loader-topDot;
+    background-color: #e1e2e4;
+    border-radius: 50%;
+    height: 8px;
+    position: relative;
+    transform: scale(1) translateY(-6px);
+    width: 8px;
+}
+.loadingIndicator .loadingIndicator-dot::before, .loadingIndicator .loadingIndicator-dot::after {
+    background-color: #e1e2e4;
+    border-radius: 50%;
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.loadingIndicator .loadingIndicator-dot::before {
+    animation: 1.5s ease 0s normal none infinite running loader-leftDot;
+    transform: translate(-5.2px, 9px);
+}
+.loadingIndicator .loadingIndicator-dot::after {
+    animation: 1.5s ease 0s normal none infinite running loader-rightDot;
+    transform: translate(5.2px, 9px);
+}
+@keyframes loader-rotation {
+0% {
+    transform: rotate(0deg);
+}
+50% {
+    transform: rotate(180deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+@keyframes loader-rotation {
+0% {
+    transform: rotate(0deg);
+}
+50% {
+    transform: rotate(180deg);
+}
+100% {
+    transform: rotate(360deg);
+}
+}
+@keyframes loader-topDot {
+0% {
+    animation-timing-function: cubic-bezier(0.4, 0.155, 0.355, 1);
+    transform: scale(1) translateY(-6px);
+}
+40% {
+    animation-timing-function: cubic-bezier(0.475, 0.005, 0.695, 0.83);
+    transform: scale(1.3) translateY(6px);
+}
+100% {
+    transform: scale(1) translateY(-6px);
+}
+}
+@keyframes loader-topDot {
+0% {
+    animation-timing-function: cubic-bezier(0.4, 0.155, 0.355, 1);
+    transform: scale(1) translateY(-6px);
+}
+40% {
+    animation-timing-function: cubic-bezier(0.475, 0.005, 0.695, 0.83);
+    transform: scale(1.3) translateY(6px);
+}
+100% {
+    transform: scale(1) translateY(-6px);
+}
+}
+@keyframes loader-leftDot {
+0% {
+    animation-timing-function: cubic-bezier(0.4, 0.155, 0.355, 1);
+    transform: translate(-5.2px, 9px);
+}
+40% {
+    animation-timing-function: cubic-bezier(0.475, 0.005, 0.695, 0.83);
+    transform: translate(5.18px, -9px);
+}
+100% {
+    transform: translate(-5.2px, 9px);
+}
+}
+@keyframes loader-leftDot {
+0% {
+    animation-timing-function: cubic-bezier(0.4, 0.155, 0.355, 1);
+    transform: translate(-5.2px, 9px);
+}
+40% {
+    animation-timing-function: cubic-bezier(0.475, 0.005, 0.695, 0.83);
+    transform: translate(5.18px, -9px);
+}
+100% {
+    transform: translate(-5.2px, 9px);
+}
+}
+@keyframes loader-rightDot {
+0% {
+    animation-timing-function: cubic-bezier(0.4, 0.155, 0.355, 1);
+    transform: translate(5.2px, 9px);
+}
+40% {
+    animation-timing-function: cubic-bezier(0.475, 0.005, 0.695, 0.83);
+    transform: translate(-5.18px, -9px);
+}
+100% {
+    transform: translate(5.2px, 9px);
+}
+}
+@keyframes loader-rightDot {
+0% {
+    animation-timing-function: cubic-bezier(0.4, 0.155, 0.355, 1);
+    transform: translate(5.2px, 9px);
+}
+40% {
+    animation-timing-function: cubic-bezier(0.475, 0.005, 0.695, 0.83);
+    transform: translate(-5.18px, -9px);
+}
+100% {
+    transform: translate(5.2px, 9px);
+}
+}

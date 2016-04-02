@@ -4,7 +4,6 @@ import ProjectSelection from '../entities/ProjectSelection';
 import TaskList from '../entities/TaskList';
 
 class IndexContainer extends React.Component {
-
   constructor() {
     super();
     this.state = {
@@ -30,8 +29,16 @@ class IndexContainer extends React.Component {
       <div className="container">
         <div className="index-container">
           <Auth onAuthenticated = {this.onAuthenticated.bind(this)} />
-          <ProjectSelection apiClient={this.state.apiClient} controller={this} />
-          <TaskList apiClient={this.state.apiClient} controller={this} project={this.state.project} />
+          <div className="row">
+            <div className="col-md-4">
+              <ProjectSelection apiClient={this.state.apiClient} controller={this} />
+            </div>
+            <div className="col-md-8">
+              <div style = { this.state.project ? { display: 'block' } : { display: 'none' }} >
+                <TaskList apiClient={this.state.apiClient} controller={this} project={this.state.project} />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

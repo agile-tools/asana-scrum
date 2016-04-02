@@ -2,6 +2,7 @@ import React from 'react';
 import config from '../../config';
 import './auth.scss';
 import Asana from 'asana';
+import Loader from '../helpers/Loader';
 import cookie from 'react-cookie';
 
 class Auth extends React.Component {
@@ -50,7 +51,7 @@ class Auth extends React.Component {
         }
         </div>
         <div style={!this.state.loaded ? { display: 'block' } : { display: 'none' }}>
-          <span className="loader">Loading...</span>
+          <Loader />
         </div>
       </div>
     );
