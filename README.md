@@ -11,7 +11,14 @@ asana-scrum uses the asana api to introduce entities like
  as attributes of asana task.
 
 
+## Prerequisites
+
+Install the latest [nvm](https://github.com/creationix/nvm#install-script)
+
+
 ## Run
+
+`nvm use stable`
 
 
 ```cp config.js.example config.js```
@@ -19,6 +26,5 @@ asana-scrum uses the asana api to introduce entities like
 and update your client_id and client_secret
 
 `npm install`
-
 
 `npm start`
