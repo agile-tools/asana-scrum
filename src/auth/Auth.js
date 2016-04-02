@@ -17,9 +17,7 @@ class Auth extends React.Component {
       clientId: config.asana.oAuth.client_id,
       redirectUri: config.asana.oAuth.redirect_uri
     });
-
     const token = cookie.load('token');
-
     if (token) {
       client.useOauth({ credentials: token });
       client.users.me().then((me) => {
@@ -27,6 +25,7 @@ class Auth extends React.Component {
           name: me.name,
           loaded: true
         });
+        this.props.onAuthenticated(client);
       }).catch((err) => {
         console.log('Error fetching user: ' + err);
       });
@@ -57,5 +56,9 @@ class Auth extends React.Component {
     );
   }
 }
+
+Auth.propTypes = {
+  onAuthenticated: React.PropTypes.func
+};
 
 export default Auth;
